@@ -17,6 +17,7 @@
     <style name="Theme.GerenciarJogos.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <item name="colorOnPrimary">@color/white</item>
     </style>
 
     <style name="Theme.GerenciarJogos.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />

@@ -12,14 +12,10 @@ class Splash : AppCompatActivity() {
         setContentView(R.layout.activity_splash)
 
         Handler().postDelayed({
-          //  startActivity(Intent(this,ListaHQActivity::class.java))
             carregarTelaInicial()
-
             finish()
-        }, 5000)
-
+        }, 3000)
     }
-
 
     fun carregarTelaInicial(){
         var intent = Intent(this, login::class.java)

@@ -15,4 +15,6 @@
     <string name="Login">LOG IN</string>
     <string name="create_account">Create account</string>
     <string name="remember">Remember</string>
+    <string name="name">Nome</string>
+    <string name="passwordRepeate">Repeate Password</string>
 </resources>
