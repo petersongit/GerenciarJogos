@@ -1,7 +1,8 @@
-package com.example.gerenciarjogos
+package com.example.gerenciarjogos.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.gerenciarjogos.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

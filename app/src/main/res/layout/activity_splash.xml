@@ -5,13 +5,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Splash">
+    android:orientation="vertical">
 
     <ImageView
         android:id="@+id/imageView"
-        android:contentDescription="@string/imgInicial"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:contentDescription="@string/imgInicial"
+        android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

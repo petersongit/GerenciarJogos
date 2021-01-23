@@ -1,9 +1,10 @@
-package com.example.gerenciarjogos
+package com.example.gerenciarjogos.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import com.example.gerenciarjogos.R
 
 class Splash : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,13 +16,13 @@ class Splash : AppCompatActivity() {
             carregarTelaInicial()
 
             finish()
-        }, 3000)
+        }, 5000)
 
     }
 
 
     fun carregarTelaInicial(){
-        var intent = Intent(this, MainActivity::class.java)
+        var intent = Intent(this, login::class.java)
         startActivity(intent)
     }
 }
