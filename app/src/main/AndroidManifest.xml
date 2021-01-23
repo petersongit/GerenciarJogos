@@ -9,10 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GerenciarJogos">
+        <activity android:name=".ui.JogosDetalhe"></activity>
         <activity
             android:name=".ui.CadastroJogos"
             android:label="@string/title_activity_cadastro_jogos"
-            android:theme="@style/Theme.GerenciarJogos.NoActionBar"></activity>
+            android:theme="@style/Theme.GerenciarJogos.NoActionBar" />
         <activity
             android:name=".ui.CadastroUsuariosActivity"
             android:theme="@style/Theme.GerenciarJogos.NoActionBar" />
