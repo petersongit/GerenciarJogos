@@ -21,7 +21,9 @@
             android:name=".ui.CadastroUsuariosActivity"
             android:theme="@style/Theme.GerenciarJogos.NoActionBar" />
         <activity android:name=".ui.login" />
-        <activity android:name=".ui.MainActivity" />
+
+        <activity android:name=".ui.MainActivity" android:theme="@style/Theme.GerenciarJogos.NoActionBar"/>
+
         <activity
             android:name=".ui.Splash"
             android:theme="@style/Theme.Design.NoActionBar">

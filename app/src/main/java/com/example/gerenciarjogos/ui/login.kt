@@ -3,6 +3,7 @@ package com.example.gerenciarjogos.ui
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import com.example.gerenciarjogos.R
 import kotlinx.android.synthetic.main.activity_login.*
 
@@ -22,8 +23,6 @@ class login : AppCompatActivity() {
             carregarTelaCadastro()
         }
     }
-
-
 
     fun carregarTelaInicial(){
         var intent = Intent(this, CadastroJogos::class.java)

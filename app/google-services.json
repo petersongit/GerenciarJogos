@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "972352584867",
+    "project_id": "gerenciar-jogos",
+    "storage_bucket": "gerenciar-jogos.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:972352584867:android:48674d976cff2a303e5316",
+        "android_client_info": {
+          "package_name": "com.example.gerenciarjogos"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "972352584867-fea0bndoml8tapf9kopq5reaei1vr9v6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBErgV4ghJ2WVqeZVbLKYID2rFC0K0S-i8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "972352584867-fea0bndoml8tapf9kopq5reaei1vr9v6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
