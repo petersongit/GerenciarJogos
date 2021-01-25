@@ -13,5 +13,7 @@
     <color name="light_red">#EA2427</color>
     <color name="DeepSkyBlue">#00BFFF</color>
     <color name="SteelBlue">#4682B4</color>
+    <color name="LightGrey">#D3D3D3</color>
+
 
 </resources>

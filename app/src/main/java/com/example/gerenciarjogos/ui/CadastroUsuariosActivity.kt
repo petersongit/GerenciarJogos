@@ -3,6 +3,7 @@ package com.example.gerenciarjogos.ui
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import com.example.gerenciarjogos.R
 import com.example.gerenciarjogos.model.Usuario
 import com.google.firebase.database.DatabaseReference
@@ -27,12 +28,13 @@ class CadastroUsuariosActivity : AppCompatActivity() {
         btnCriarAccount.setOnClickListener{
             var usario = getUsuario()
             sendUsuario(usario)
+
         }
     }
 
     fun config(){
          database = Firebase.database
-         myRef = database.getReference("usuarios/user")
+         myRef = database.getReference("usuarios")
     }
 
     fun getUsuario(): Usuario {
@@ -46,7 +48,18 @@ class CadastroUsuariosActivity : AppCompatActivity() {
     }
 
     fun sendUsuario(user: Usuario){
-        myRef.setValue(user)
+        //myRef.setValue(user)
+        myRef.child(user.name.toString()).setValue(user).addOnSuccessListener {
+            Toast.makeText(this, "Usuario Cadastrado com sucesso!", Toast.LENGTH_LONG).show()
+            limparCampos()
+        }
+    }
+
+    fun limparCampos(){
+        txtName.text.clear()
+        txtEmail.text.clear()
+        txtPassword.text.clear()
+        txtPasswordRepeat.text.clear()
     }
 
 }
