@@ -26,8 +26,8 @@ class CadastroUsuariosActivity : AppCompatActivity() {
         config()
 
         btnCriarAccount.setOnClickListener{
-            var usario = getUsuario()
-            sendUsuario(usario)
+            var usuario = getUsuario()
+            salvarUsuario(usuario)
 
         }
     }
@@ -47,7 +47,7 @@ class CadastroUsuariosActivity : AppCompatActivity() {
         return usuario
     }
 
-    fun sendUsuario(user: Usuario){
+    fun salvarUsuario(user: Usuario){
         //myRef.setValue(user)
         myRef.child(user.name.toString()).setValue(user).addOnSuccessListener {
             Toast.makeText(this, "Usuario Cadastrado com sucesso!", Toast.LENGTH_LONG).show()
