@@ -34,12 +34,14 @@ class MainActivity : AppCompatActivity(), JogosAdapter.OnClickJogoListener{
     }
 
     override fun onClickJogo(position: Int) {
-        carregarTelaDetalheJogo()
+        carregarTelaDetalheJogo(position)
     }
 
 
-    fun carregarTelaDetalheJogo(){
+    fun carregarTelaDetalheJogo(position: Int){
         var intent = Intent(this, JogoDetalhe::class.java)
+        intent.putExtra("jogo", jogos[position])
+
         startActivity(intent)
     }
 }
