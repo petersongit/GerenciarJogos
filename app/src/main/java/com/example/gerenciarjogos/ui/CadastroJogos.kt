@@ -5,6 +5,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.gerenciarjogos.R
@@ -27,10 +28,7 @@ class CadastroJogos : AppCompatActivity() {
     private lateinit var RefImagem: StorageReference
 
     lateinit var uriImagem: Uri
-
     private val CODE_IMG = 0
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,6 +39,9 @@ class CadastroJogos : AppCompatActivity() {
 
         btnSaveJogo.setOnClickListener {
             var jogo = getJogo()
+
+
+            Log.i("IMAGEM", jogo.imgRef.toString())
             salvarJogo(jogo)
         }
 
@@ -49,7 +50,6 @@ class CadastroJogos : AppCompatActivity() {
         }
 
     }
-
 
     fun configDataBase(){
         database = Firebase.database
@@ -62,10 +62,12 @@ class CadastroJogos : AppCompatActivity() {
     }
 
     fun getJogo(): Jogo {
+
         val jogo = Jogo(
-            txtCadstroJogoName.text.toString(),
+            txtCadstroJogoName.text.toString().toUpperCase(),
             txtCadstroJogoCriadoEm.text.toString(),
-            txtCadstroJogoDescricao.text.toString())
+            txtCadstroJogoDescricao.text.toString(),
+            "a")
 
         return jogo
     }
@@ -113,10 +115,28 @@ class CadastroJogos : AppCompatActivity() {
     }
 
     fun SalvarImagem(jogo: Jogo){
+
         if (uriImagem != null){
             var RefDiretorio= RefStorage.child("imagens")
             RefImagem = RefDiretorio.child(jogo.name)
-            RefImagem.putFile(uriImagem)
+
+
+            val uploadTask = RefImagem.putFile(uriImagem)
+            uploadTask.continueWithTask { task ->
+                if (task.isSuccessful) {
+
+                }
+                RefImagem!!.downloadUrl
+            }.addOnCompleteListener { task ->
+
+                val downloadUri = task.result
+                val url = downloadUri!!.toString()
+                    .substring(0, downloadUri.toString().indexOf("&token"))
+
+                RefDB.child(jogo.name.toString()).child("imgRef").setValue(url)
+
+            }
+
         }
 
     }

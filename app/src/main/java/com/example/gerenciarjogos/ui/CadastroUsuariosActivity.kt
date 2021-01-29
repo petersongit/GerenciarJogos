@@ -22,6 +22,7 @@ class CadastroUsuariosActivity : AppCompatActivity() {
 
         config()
 
+
         btnCriarAccount.setOnClickListener{
             var usuario = getUsuario()
             salvarUsuario(usuario)

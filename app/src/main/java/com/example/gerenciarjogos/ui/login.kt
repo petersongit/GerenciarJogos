@@ -22,7 +22,7 @@ class login : AppCompatActivity() {
     }
 
     fun carregarTelaInicial(){
-        var intent = Intent(this, CadastroJogos::class.java)
+        var intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
     }
 

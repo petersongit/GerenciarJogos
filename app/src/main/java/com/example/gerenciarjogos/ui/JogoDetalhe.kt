@@ -17,13 +17,9 @@ class JogoDetalhe : AppCompatActivity() {
     private lateinit var  database: FirebaseDatabase
     private lateinit var  myRefJogo: DatabaseReference
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_jogo_detalhe)
-
-
     }
 
     override fun onStart() {
@@ -47,13 +43,8 @@ class JogoDetalhe : AppCompatActivity() {
 
 
     fun buscarJogo(nameJogo: String){
-        //myRef.setValue(user)
-        //Toast.makeText(this, nameJogo, Toast.LENGTH_LONG).show()
-
         myRefJogo.child(nameJogo).get().addOnSuccessListener {
 
-
-           // var jogo: Jogo = it.getValue()
         }
 
     }
