@@ -1,10 +1,10 @@
 package com.example.gerenciarjogos.ui
 
-import android.app.AlertDialog
+import android.app.Activity
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
-import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.gerenciarjogos.R
@@ -16,10 +16,7 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.ktx.storage
-import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_cadastro_jogos.*
-
-
 
 class CadastroJogos : AppCompatActivity() {
     private lateinit var  database: FirebaseDatabase
@@ -27,17 +24,15 @@ class CadastroJogos : AppCompatActivity() {
 
     private lateinit var storage: FirebaseStorage
     private lateinit var RefStorage:StorageReference
+    private lateinit var RefImagem: StorageReference
 
-    private val CODE_IMG = 1000
-    lateinit var alertDialog: AlertDialog
+    lateinit var uriImagem: Uri
 
+    private val CODE_IMG = 0
 
-    //var storageRef: StorageReference = storage.getReference()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
-
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cadastro_jogos)
 
@@ -49,33 +44,20 @@ class CadastroJogos : AppCompatActivity() {
             salvarJogo(jogo)
         }
 
-
-
         btnImagem.setOnClickListener {
-            //val mountainsRef: StorageReference = storageRef.child("mountains.jpg")
-            //gs://gerenciar-jogos.appspot.com
-
-
-            // val picasso = Picasso.get()
-            // var intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
-
-            setIntents()
-
+            abrirGaleria()
         }
-
 
     }
 
 
-
-
-        fun configDataBase(){
+    fun configDataBase(){
         database = Firebase.database
         RefDB = database.getReference("jogos")
     }
 
     fun configStorage(){
-        storage = Firebase.storage
+        storage = Firebase.storage("gs://gerenciar-jogos.appspot.com")
         RefStorage = storage.reference
     }
 
@@ -90,8 +72,8 @@ class CadastroJogos : AppCompatActivity() {
 
 
     fun salvarJogo(jogo: Jogo){
-        Log.i("TESTE", jogo.name)
         RefDB.child(jogo.name.toString()).setValue(jogo).addOnSuccessListener {
+            SalvarImagem(jogo)
             Toast.makeText(this, "Jogo Cadastrado com sucesso!", Toast.LENGTH_LONG).show()
             limparCampos()
         }
@@ -104,22 +86,12 @@ class CadastroJogos : AppCompatActivity() {
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
     //Configura a itent para obter imagem da galeria
-    fun setIntents(){
+    fun abrirGaleria(){
+        intent =  Intent(Intent.ACTION_PICK,  MediaStore.Images.Media.INTERNAL_CONTENT_URI)
+
         val intent = Intent()
         intent.type="image/"
-        intent.action = Intent.ACTION_GET_CONTENT
         startActivityForResult(Intent.createChooser(intent, "Captura imagem"), CODE_IMG)
     }
 
@@ -127,29 +99,26 @@ class CadastroJogos : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        Log.i("TESTE RESQUEST", requestCode.toString())
-        Log.i("TESTE RESLT", resultCode.toString())
-
-
-        if(requestCode == CODE_IMG){
-            alertDialog.show()
-            val uploadTask = RefStorage.putFile(data!!.data!!)
-            val task = uploadTask.continueWithTask { task ->
-                if (task.isSuccessful) {
-                    Toast.makeText(this, "Chegando", Toast.LENGTH_SHORT).show()
-                }
-                RefStorage!!.downloadUrl
-            }.addOnCompleteListener { task ->
-                if (task.isSuccessful) {
-                    val downloadUri = task.result
-                    val url = downloadUri!!.toString()
-                        .substring(0, downloadUri.toString().indexOf("&token"))
-                    Log.i("Link Direto ", url)
-                    alertDialog.dismiss()
-                    //Picasso.get().load(url).into(ivRec)
+        if (resultCode == Activity.RESULT_OK){
+            if(requestCode == 0) {
+                if (data != null){
+                    uriImagem = data!!.data!!
+                    Toast.makeText(this, "Foto selecionada com sucesso!", Toast.LENGTH_LONG).show()
+                   // btnImagem.setBackgroundColor(R.color.SteelBlue)
+                    //RefImagem.putFile(data!!.data!!)
                 }
             }
         }
+
+    }
+
+    fun SalvarImagem(jogo: Jogo){
+        if (uriImagem != null){
+            var RefDiretorio= RefStorage.child("imagens")
+            RefImagem = RefDiretorio.child(jogo.name)
+            RefImagem.putFile(uriImagem)
+        }
+
     }
 }
 

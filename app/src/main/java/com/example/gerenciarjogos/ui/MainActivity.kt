@@ -15,6 +15,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity(), JogosAdapter.OnClickJogoListener{
     val jogo1 = Jogo("Homem Aranha", "12", "asdsadsadsa")
     val jogo2 = Jogo("FIFA", "14", "asds")
+    val jogo3 = Jogo("GOD OF WAR", "14", "asds")
 
     val jogos: ArrayList<Jogo> = ArrayList<Jogo>()
 
@@ -25,6 +26,7 @@ class MainActivity : AppCompatActivity(), JogosAdapter.OnClickJogoListener{
 
         jogos.add(jogo1)
         jogos.add(jogo2)
+        jogos.add(jogo3)
         var adapter = JogosAdapter(jogos, this)
 
         recycleJogos.layoutManager = GridLayoutManager(this, 2)
