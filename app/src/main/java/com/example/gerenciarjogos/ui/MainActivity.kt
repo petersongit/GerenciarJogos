@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity(), JogosAdapter.OnClickJogoListener{
         carregarJogos()
 
         fabCadastrarJogos.setOnClickListener({
-            carregarJogos()
+            carregarTelaCadsatroJogos()
         })
 
     }
