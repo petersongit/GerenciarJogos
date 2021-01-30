@@ -14,7 +14,7 @@ class Splash : AppCompatActivity() {
         Handler().postDelayed({
             carregarTelaInicial()
             finish()
-        }, 100)
+        }, 3000)
     }
 
     fun carregarTelaInicial(){

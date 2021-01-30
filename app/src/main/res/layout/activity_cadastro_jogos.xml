@@ -87,9 +87,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:ems="10"
-                android:inputType="text"
+                android:inputType="textMultiLine"
                 android:textAlignment="viewStart"
-                android:textColor="@color/SteelBlue" />
+                android:textColor="@color/SteelBlue"/>
 
             <Button
                 android:id="@+id/btnSaveJogo"

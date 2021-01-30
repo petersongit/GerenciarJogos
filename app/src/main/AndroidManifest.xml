@@ -15,21 +15,29 @@
         <activity android:name=".ui.CardJogo"></activity>
         <activity
             android:name=".ui.JogoDetalhe"
-            android:theme="@style/Theme.GerenciarJogos.NoActionBar" />
+            android:theme="@style/Theme.GerenciarJogos.NoActionBar"/>
+
         <activity
             android:name=".ui.CadastroJogos"
             android:label="@string/title_activity_cadastro_jogos"
-            android:theme="@style/Theme.GerenciarJogos.NoActionBar" />
+            android:theme="@style/Theme.GerenciarJogos.NoActionBar"/>
+
         <activity
             android:name=".ui.CadastroUsuariosActivity"
-            android:theme="@style/Theme.Design.NoActionBar" />
-        <activity android:name=".ui.login" />
+            android:theme="@style/Theme.GerenciarJogos.NoActionBar"/>
 
-        <activity android:name=".ui.MainActivity" android:theme="@style/Theme.GerenciarJogos.NoActionBar"/>
+        <activity
+            android:name=".ui.login"
+            android:theme="@style/Theme.GerenciarJogos.NoActionBar"/>
+
+        <activity
+            android:name=".ui.MainActivity"
+            android:theme="@style/Theme.GerenciarJogos.NoActionBar"/>
 
         <activity
             android:name=".ui.Splash"
-            android:theme="@style/Theme.Design.NoActionBar">
+            android:theme="@style/Theme.GerenciarJogos.NoActionBar">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
